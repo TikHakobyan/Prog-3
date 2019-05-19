@@ -17,13 +17,13 @@ module.exports =class Gishatich extends LivingCreature {
         ];
     }
    chooseCell(character) {
-       this.getNewCoordinates();
+       this.newDirections();
        return super.chooseCell(character);
    }
    move() {
 
     var emptCell = this.chooseCell(0);
-    var newCell = random(emptCell);
+    var newCell = emptCell[Math.floor(Math.random()*emptCell.length)]
 
     if (newCell) {
         var x = newCell[0];
@@ -45,7 +45,7 @@ module.exports =class Gishatich extends LivingCreature {
 eat() {
 
     var emptCell = this.chooseCell(2);
-    var newCell = random(emptCell);
+    var newCell = emptCell[Math.floor(Math.random()*emptCell.length)];
 
 
     if (newCell) {
@@ -95,7 +95,7 @@ eat() {
 mul() {
 
     var emptCell = this.chooseCell(0);
-    var newCell = random(emptCell);
+    var newCell = emptCell[Math.floor(Math.random()*emptCell.length)];
 
 
     if (newCell) {

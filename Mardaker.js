@@ -14,14 +14,13 @@ module.exports =class Mardaker extends LivingCreature {
     }
 
    chooseCell(character) {
-       this.getNewCoordinates();
+       this.newDirections();
        return super.chooseCell(character);
    }
    move() {
 
     var emptCell = this.chooseCell(0);
-    var newCell = random(emptCell);
-
+    var newCell = emptCell[Math.floor(Math.random()*emptCell.length)]
     if (newCell) {
         var x = newCell[0];
         var y = newCell[1];
@@ -44,7 +43,7 @@ eat() {
     let emptCell1 = this.chooseCell(3);
     let emptCell2 = this.chooseCell(4);
     let emptCell = emptCell1.concat(emptCell2);
-    var newCell = random(emptCell);
+    var newCell = emptCell[Math.floor(Math.random()*emptCell.length)];
 
 
     if (newCell) {
@@ -105,7 +104,7 @@ eat() {
 mul() {
 
     var emptCell = this.chooseCell(0);
-    var newCell = random(emptCell);
+    var newCell = emptCell[Math.floor(Math.random()*emptCell.length)];
 
 
     if (newCell) {

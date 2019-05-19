@@ -2,8 +2,10 @@ let LivingCreature = require("./livingCreauture.js")
 module.exports =class Grass extends LivingCreature {
 
     mul() {
+        
         this.multiply++;
-        var newCell = random(this.chooseCell(0));
+        var emptCell=this.chooseCell(0)
+        var newCell = emptCell[Math.floor(Math.random()*emptCell.length)];
         if(this.multiply >= 8 && newCell) {
             var newGrass = new Grass(newCell[0],newCell[1], this.index);
             grassArr.push(newGrass);

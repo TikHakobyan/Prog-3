@@ -18,13 +18,13 @@ module.exports = class Xotaker extends LivingCreature {
        ];
    }
    chooseCell(character) {
-       this.getNewCoordinates();
+       this.NewDirections();
        return super.chooseCell(character);
    }
    move() {
 
     var emptCell = this.chooseCell(0);
-    var newCell = random(emptCell);
+    var newCell = emptCell[Math.floor(Math.random()*emptCell.length)];
 
     if (newCell) {
         var x = newCell[0];
@@ -46,7 +46,7 @@ module.exports = class Xotaker extends LivingCreature {
 eat() {
 
     var emptCell = this.chooseCell(1);
-    var newCell = random(emptCell);
+    var newCell = emptCell[Math.floor(Math.random()*emptCell.length)];
 
 
     if (newCell) {
@@ -93,7 +93,7 @@ eat() {
 mul() {
 
     var emptCell = this.chooseCell(0);
-    var newCell = random(emptCell);
+    var newCell = emptCell[Math.floor(Math.random()*emptCell.length)];
 
 
     if (newCell) {
