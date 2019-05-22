@@ -1,4 +1,5 @@
 let LivingCreature = require("./livingCreauture.js")
+let Xotaker = require("./Xotaker")
 module.exports =class Mard extends LivingCreature {
     constructor(x, y, index){
         super(x, y, index);
@@ -105,7 +106,7 @@ mul() {
 
 
 
-        var normard = new Mard(x, y);
+        var normard = new Mard(x, y,4);
         mardArr.push(normard);
 
 

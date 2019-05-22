@@ -104,7 +104,7 @@ mul() {
 
 
 
-        var norXotaker = new Xotaker(x, y);
+        var norXotaker = new Xotaker(x, y , 2);
         xotakerArr.push(norXotaker);
 
 

@@ -115,7 +115,7 @@ mul() {
 
 
 
-        var normardaker = new Mardaker(x, y);
+        var normardaker = new Mardaker(x, y , 5);
         mardakerArr.push(normardaker);
 
 

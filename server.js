@@ -29,7 +29,6 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var messages = [];
 
 app.use(express.static("."));
 app.get('/', function (req, res) {
@@ -44,9 +43,22 @@ function createObjects(){
             if (matrix[y][x]==2) {
                 var xotaker = new Xotaker(x, y, 2);
                 xotakerArr.push(xotaker);
-            } else if( matrix[y][x] == 1){
+            } 
+            else if( matrix[y][x] == 1){
                 var grass = new Grass (x, y, 1);
                 grassArr.push(grass);
+            }
+            else if( matrix[y][x] == 3){
+                var gishatich = new Gishatich (x, y, 3);
+                gishatichArr.push(gishatich);
+            }
+            else if( matrix[y][x] == 4){
+                var mard = new Mard (x, y, 4);
+                mardArr.push(mard);
+            }
+            else if( matrix[y][x] == 5){
+                var mardaker = new Mardaker (x, y, 5);
+                mardakerArr.push(mardaker);
             }
             
         }
@@ -57,18 +69,42 @@ function createObjects(){
 createObjects()
 
 let obj = {
+    season:"winter",
     'matrix': matrix,
 }
-
+var seasonTime = 0;
 function game() {
+    
+    seasonTime++
+    if(seasonTime<=5){
+        obj.season = "winter"
+    }
+    else if(seasonTime<=10){
+        obj.season = "summer"
+    }
+    else{
+        seasonTime = 0
+    }
+
+
     for(var i in grassArr){
         grassArr[i].mul();
     }
     for(var i in xotakerArr){
         xotakerArr[i].eat()
     }
-    io.sockets.emit("draw matrix", obj);
+    for(var i in gishatichArr){
+        gishatichArr[i].eat()
+    }
+    for(var i in mardArr){
+        mardArr[i].eat()
+    }
+    for(var i in mardakerArr){
+        mardakerArr[i].eat()
+    }
+    io.sockets.emit("draw matrix", obj);    
 }
+
 setInterval(game, 1000)
 
 function kill(){
@@ -81,6 +117,3 @@ function kill(){
         
     }
 }
-io.on('connection', function (socket) {  
-    socket.on("spaniii", kill) ;
-});

@@ -106,7 +106,7 @@ mul() {
 
 
 
-        var norgishatich = new Gishatich(x, y);
+        var norgishatich = new Gishatich(x, y , 3);
         gishatichArr.push(norgishatich);
 
 
