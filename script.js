@@ -3,7 +3,6 @@ var socket = io()
 
 function setup() {
 
-    frameRate(3);
     createCanvas(23 * side, 13 * side);
     background('#acacac');
 }
@@ -31,19 +30,19 @@ function drawMatrix(obj) {
                 
             } else if (matrix[i][j] == 2) {
                 if(seasonTime == "winter"){
-                    fill("white")
-                }
-                else {
-
-                 fill("green");
-                }
-            } else if (matrix[i][j] == 0) {
-                if(seasonTime == "winter"){
                     fill("yellow")
                 }
                 else {
 
                  fill("orange");
+                }
+            } else if (matrix[i][j] == 0) {
+                if(seasonTime == "winter"){
+                    fill("grey")
+                }
+                else {
+
+                 fill("grey");
                 }   
             }
             else if (matrix[i][j] == 3) {
@@ -81,3 +80,10 @@ function drawMatrix(obj) {
     }
 } 
 
+function kill(){
+    socket.emit("kill")
+}
+
+function spawnheroes(){
+    socket.emit("spawn")
+}
